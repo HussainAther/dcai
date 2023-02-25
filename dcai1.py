@@ -51,3 +51,5 @@ evaluate(nb_clf)
 
 train.head()
 
+print(train.iloc[0].to_dict())
+
