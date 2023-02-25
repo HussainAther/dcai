@@ -11,6 +11,8 @@ sgd_clf = Pipeline([
     ('clf', SGDClassifier()),
 ])
 
+_ = sgd_clf.fit(train['review'], train['label'])
+
 train = pd.read_csv('reviews_train.csv')
 test = pd.read_csv('reviews_test.csv')
 
