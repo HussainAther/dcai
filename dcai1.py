@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.linear_model import SGDClassifier
 from sklearn.pipeline import Pipeline
 from sklearn import metrics
+from sklearn.naive_bayes import MultinomialNB
 
 sgd_clf = Pipeline([
     ('vect', CountVectorizer()),
@@ -35,3 +36,15 @@ You could also try experimenting with different values of the model hyperparamet
 
 Or you can even try training multiple different models and ensembling their predictions, a strategy often used to win prediction competitions like Kaggle.
 """
+
+# Naive Bayes model:
+
+nb_clf = Pipeline([
+    ('vect', CountVectorizer()),
+    ('tfidf', TfidfTransformer()),
+    ('clf', MultinomialNB()),
+])
+
+nb_clf.fit(train['review'], train['label'])
+
+evaluate(nb_clf)
