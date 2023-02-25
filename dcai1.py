@@ -48,3 +48,6 @@ nb_clf = Pipeline([
 nb_clf.fit(train['review'], train['label'])
 
 evaluate(nb_clf)
+
+train.head()
+
