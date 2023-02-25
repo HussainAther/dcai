@@ -38,3 +38,9 @@ trainer = Trainer(
     args=training_args,
     train_dataset=train_tokenized_dataset,
 )
+
+trainer.train()  # may take a while to train (try to run on a GPU if you can access one)
+
+pred_probs = trainer.predict(test_tokenized_dataset).predictions
+pred_classes = np.argmax(pred_probs, axis=1)
+print(f"Error rate of predictions: {np.mean(pred_classes != test_tokenized_dataset['label'])}")
